@@ -22,10 +22,9 @@ class TiberiusBot {
       if (self) return;
       //console.log(userstate);
       const {'display-name':username} = userstate;
+      //Chain of responsibilities starts:
       const result =  await this.handlers[0].handleCommand(message)
-      console.log(result);
       this.send(channel, result, username);
-
     })
   }
 
