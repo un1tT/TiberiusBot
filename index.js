@@ -10,7 +10,7 @@ const kekHandler = new KekHandler();
 const feedHandler = new FeedHandler();
 greetingsHandler.successor = kekHandler;
 kekHandler.successor = feedHandler;
-const handlers = [greetingsHandler,kekHandler]
+const handlers = [greetingsHandler,kekHandler, feedHandler]
 const bot = new TiberiusBot(handlers);
 
 

@@ -24,6 +24,7 @@ const getShortLink = async (baseLink) => {
   try { 
     const { data: response } = await axios(requestConfig);
     const shortLink = response.data.attributes.full_url
+    console.log(shortLink);
     return shortLink;
   } catch (error) {
     console.log(error.response);

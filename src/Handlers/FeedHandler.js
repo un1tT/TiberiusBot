@@ -3,6 +3,7 @@ const axios = require('axios');
 const parser = require('xml2js').parseString;
 const util = require('util');
 const getShortLink = require('../services/ShortLinkProvider');
+const cutString = require('../services/stringCutter')
 
 class FeedHandler {
   handleCommand(message) {
@@ -28,7 +29,7 @@ class FeedHandler {
     return message;
   }
 
-  buildFeed(rss) {
+  async buildFeed(rss) {
     const feeds = rss.channel[0].item;
     //Function random() returns number in range [0,1), so expression below provide number in range [0,amount of feeds in rss) 
     const randomNumber = Math.floor(Math.random() * (feeds.length - 1));
@@ -36,18 +37,18 @@ class FeedHandler {
     const title = feedObj.title[0];
     const text = feedObj.description[0];
     const link = feedObj.link[0];
-    const shortLink = getShortLink(link);
-    console.log(shortLink);
-    const trashFeed = `${title}. ${text} ${shortLink}`;
-    const feed = this.filterHtml(trashFeed);
-    return feed;
+    const shortLink = await getShortLink(link);
+    const trashLongFeed = `${title}. ${text}`;
+    const longFeed = this.filterHtml(trashLongFeed);
+    const shortFeed = cutString(longFeed);
+    return (`${shortFeed} ${shortLink}`);
   }
 
   filterHtml(feed) {
-    const imgReg = /< img src =>\\w\">/;
-    const tagReg = /<[^>]*>/;
-    let result = feed.replace(tagReg, '');
-    result = result.replace(imgReg, '');
+    //const imgReg = /< img src =>\\w\">/;
+    const tagReg = /<[^>]*>?/gm;
+    const result = feed.replace(tagReg, '');
+    //result = result.replace(imgReg, '');
     return result;
   }
 }
