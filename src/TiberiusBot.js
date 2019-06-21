@@ -24,7 +24,7 @@ class TiberiusBot {
       //console.log(userstate);
       const {'display-name':username} = userstate;
       //Chain of responsibilities starts:
-      const result =  await this.handlers[0].handleCommand(message);
+      const result =  await this.handlers[0].handleCommand(message, username);
       this.send(channel, result, username);
     });
   }

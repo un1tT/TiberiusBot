@@ -1,7 +1,7 @@
 const TiberiusBot = require('./src/TiberiusBot');
-const GreetingsHandler = require('./src/Handlers/GreetingsHandler');
+const GreetingsHandler = require('./src/Handlers/Greetings');
 const KekHandler = require('./src/Handlers/KekHandler');
-const FeedHandler = require('./src/Handlers/FeedHandler');
+const FeedHandler = require('./src/Handlers/Feed');
 
 //Current handlers chain: Greetings -> Kek
 
