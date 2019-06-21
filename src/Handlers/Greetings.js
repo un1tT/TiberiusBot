@@ -1,11 +1,12 @@
 class GreetingHandler {
-  handleCommand(message) {
+  handleCommand(data) {
+    const {message} = data;
     if (greetings.includes(message.toLowerCase())) {
       return ('И тебе привет')
      } 
      else {
        if (this.successor) {
-         return this.successor.handleCommand(message)
+         return this.successor.handleCommand(data)
        } else {
          return null
        }

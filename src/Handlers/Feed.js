@@ -6,13 +6,14 @@ const getShortLink = require('../services/ShortLinkProvider');
 const cutString = require('../services/stringCutter')
 
 class FeedHandler {
-  handleCommand(message) {
+  handleCommand(data) {
+    const {message} = data;
     if (message.toLowerCase().startsWith(pattern)) {
       return this.fetchRSS();
     }
     else {
       if (this.successor) {
-        return this.successor.handleCommand(message)
+        return this.successor.handleCommand(data)
       } else {
         return null
       }
