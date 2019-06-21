@@ -1,5 +1,6 @@
 const tmi = require('tmi.js');
 const axios = require('axios');
+const {username, channels, password} = require('./constants/auth.js');
 class TiberiusBot {
   
   constructor(handlers) {
@@ -23,9 +24,9 @@ class TiberiusBot {
       //console.log(userstate);
       const {'display-name':username} = userstate;
       //Chain of responsibilities starts:
-      const result =  await this.handlers[0].handleCommand(message)
+      const result =  await this.handlers[0].handleCommand(message);
       this.send(channel, result, username);
-    })
+    });
   }
 
   send(channel, message, username){
@@ -42,10 +43,10 @@ const options = {
     maxReconnectAttempts: 5
   },
   identity: {
-    username: 'tiberius_bot',
-    password: 'oauth:ovtbu076ngrm29uh4ldc7an0mrhbe3'
+    username: username,
+    password: password
   },
-  channels: ['un1t_tv']
+  channels: channels
 };
 
 
