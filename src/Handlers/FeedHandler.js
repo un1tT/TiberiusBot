@@ -1,7 +1,8 @@
-const habrURL = require('../constants/urls');
+const { habrRSS } = require('../constants/urls');
 const axios = require('axios');
 const parser = require('xml2js').parseString;
 const util = require('util');
+const getShortLink = require('../services/ShortLinkProvider');
 
 class FeedHandler {
   handleCommand(message) {
@@ -18,31 +19,33 @@ class FeedHandler {
   }
 
   async fetchRSS() {
-    const { data: xml } = await axios.get(habrURL);
+    const { data: xml } = await axios.get(habrRSS);
+    let message = '';
     parser(xml, (err, result) => {
       //console.log(util.inspect(result, false, null))
-      this.buildFeed(result.rss);
+      message = this.buildFeed(result.rss);
     });
-    return ('Вот тебе новость');
+    return message;
   }
 
   buildFeed(rss) {
     const feeds = rss.channel[0].item;
-    //console.log(feeds);
     //Function random() returns number in range [0,1), so expression below provide number in range [0,amount of feeds in rss) 
     const randomNumber = Math.floor(Math.random() * (feeds.length - 1));
     const feedObj = feeds[randomNumber];
     const title = feedObj.title[0];
     const text = feedObj.description[0];
     const link = feedObj.link[0];
-    const trashFeed = `${title}. ${text} ${link}`;
+    const shortLink = getShortLink(link);
+    console.log(shortLink);
+    const trashFeed = `${title}. ${text} ${shortLink}`;
     const feed = this.filterHtml(trashFeed);
-    console.log(feed);
+    return feed;
   }
 
   filterHtml(feed) {
-    const imgReg = '/<img src =>\\w\">/';
-    const tagReg = '</?\w+\s+[\^>]*>';
+    const imgReg = /< img src =>\\w\">/;
+    const tagReg = /<[^>]*>/;
     let result = feed.replace(tagReg, '');
     result = result.replace(imgReg, '');
     return result;
