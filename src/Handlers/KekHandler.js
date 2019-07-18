@@ -1,7 +1,7 @@
 class KekHandler {
   handleCommand(data) {
     const {message} = data;
-    if (message.toLowerCase() == 'kek') {
+    if (message.toLowerCase() === 'kek') {
       return('LOL');
     }
     else {

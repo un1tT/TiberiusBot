@@ -3,7 +3,12 @@ class IQHandler {
   handleCommand(data) {
     const {message, username} = data;
     if (message.toLowerCase().startsWith(pattern)) {
-      return this.countIQ(username);
+      const result = this.countIQ(username);
+      let message = result < 25 ? 'Гений в чате! Pogchamp Твой результат - ' :
+          result < 75 ? 'Интеллектуала видно издалека Kappa У тебя целых ' :
+              result < 120 ? 'Надеюсь, школу получилось закончить... У тебя ':
+                  'Ты здесь чтобы деградировать, или что?)0) Твоя цифра ';
+      return message+result;
     }
     else {
       if (this.successor) {
@@ -16,8 +21,7 @@ class IQHandler {
 
   countIQ(username) {
     const unicodeLetters = username.split('').map(letter => letter.charCodeAt(0));
-    const unicodeUsername = unicodeLetters.join('').split('').map(val => parseInt(val)).reduce((acc, val) => acc + val);
-    return unicodeUsername;
+    return unicodeLetters.join('').split('').map(val => parseInt(val)).reduce((acc, val) => acc + val);
   }
 }
 
