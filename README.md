@@ -48,7 +48,7 @@ Done! Check out your channel and enjoy!
 
 * Bot answers to user after messages like "hi!" or "привет".
 
-## Versioning
+## Contribution
 
 Please make your contributions, bring new ideas and submit issues. These makes Tiberius stronger!
 
