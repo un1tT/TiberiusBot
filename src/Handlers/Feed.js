@@ -1,4 +1,4 @@
-const { habrRSS } = require('../constants/urls');
+const {habrRSS} = require('../constants/urls');
 const axios = require('axios');
 const parser = require('xml2js').parseString;
 const getShortLink = require('../services/ShortLinkProvider');
@@ -9,8 +9,7 @@ class FeedHandler {
     const {message} = data;
     if (message.toLowerCase().startsWith(pattern)) {
       return this.fetchRSS();
-    }
-    else {
+    } else {
       if (this.successor) {
         return this.successor.handleCommand(data)
       } else {
@@ -20,7 +19,7 @@ class FeedHandler {
   }
 
   async fetchRSS() {
-    const { data: xml } = await axios.get(habrRSS);
+    const {data: xml} = await axios.get(habrRSS);
     let message = '';
     parser(xml, (err, result) => {
       message = this.buildFeed(result.rss);

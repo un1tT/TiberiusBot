@@ -6,11 +6,10 @@ class IQHandler {
       const result = this.countIQ(username);
       let message = result < 25 ? 'Гений в чате! Pogchamp Твой результат - ' :
           result < 75 ? 'Интеллектуала видно издалека Kappa У тебя целых ' :
-              result < 120 ? 'Надеюсь, школу получилось закончить... У тебя ':
+              result < 120 ? 'Надеюсь, школу получилось закончить... У тебя ' :
                   'Ты здесь чтобы деградировать, или что?)0) Твоя цифра ';
-      return message+result;
-    }
-    else {
+      return message + result;
+    } else {
       if (this.successor) {
         return this.successor.handleCommand(data)
       } else {
