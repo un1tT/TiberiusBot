@@ -1,13 +1,13 @@
-const { toclickAPI } = require('../constants/urls');
+const { toClickAPI } = require('../constants/urls');
 const axios = require('axios');
-const {toclickToken} = require('../constants/auth');
+const {toClickToken} = require('../constants/auth');
 
 const getShortLink = async (baseLink) => {
   const requestConfig = {
-    url: toclickAPI,
+    url: toClickAPI,
     method: 'post',
     headers: {
-      "X-AUTH-TOKEN": toclickToken,
+      "X-AUTH-TOKEN": toClickToken,
       'Content-Type': 'application/json'
     },
     data: {
@@ -20,17 +20,15 @@ const getShortLink = async (baseLink) => {
         }
       }
     }
-  }
-  try { 
+  };
+
+  try {
     const { data: response } = await axios(requestConfig);
-    const shortLink = response.data.attributes.full_url
-    console.log(shortLink);
-    return shortLink;
+    return response.data.attributes.full_url;
   } catch (error) {
     console.log(error.response);
     return baseLink;
   }
-
-}
+};
 
 module.exports = getShortLink;
