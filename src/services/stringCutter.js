@@ -10,8 +10,7 @@ const cutString = (str) => {
   let words = shortString.split(' ');
   words.pop();
   ///Returned string is short message with '... Read more ->' in the end
-  const result = `${words.join(' ')}... ${readMorePart}`;
-  return result;
-}
+  return `${words.join(' ')}... ${readMorePart}`;
+};
 
 module.exports = cutString;
