@@ -1,21 +1,19 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import TwitchClient from './TwitchClient/TwitchClient';
-const GreetingsHandler = require('./src/Handlers/Greetings');
-const KekHandler = require('./src/Handlers/KekHandler');
-const FeedHandler = require('./src/Handlers/Feed');
-const IQHandler = require('./src/Handlers/IQ');
+import GreetingsHandler  from './Handlers/Greetings';
+import KekHandler from './Handlers/KekHandler';
+import FeedHandler from './Handlers/Feed';
+import IQHandler from './Handlers/IQ';
 
 async function bootstrap() {
   // Current handlers chain: Greetings -> Kek
 
-  const greetingsHandler = new GreetingsHandler();
-  const kekHandler = new KekHandler();
-  const feedHandler = new FeedHandler();
   const iqHandler = new IQHandler();
-  greetingsHandler.successor = kekHandler;
-  kekHandler.successor = feedHandler;
-  feedHandler.successor = iqHandler;
+  const feedHandler = new FeedHandler(iqHandler);
+  const kekHandler = new KekHandler(feedHandler);
+  const greetingsHandler = new GreetingsHandler(kekHandler);
+
   const handlers = [greetingsHandler, kekHandler, feedHandler];
   const bot = new TwitchClient(handlers);
 

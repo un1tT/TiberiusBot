@@ -1,13 +1,14 @@
-const { toClickAPI } = require('../constants/urls');
-const axios = require('axios');
-const {toClickToken} = require('../constants/auth');
+import axios from 'axios';
 
-const getShortLink = async (baseLink): Promise<string> => {
+import { TOCLICK_API } from '../constants/urls';
+import { TOCLICK_TOCKEN } from '../constants/auth';
+
+export const getShortLink = async (baseLink): Promise<string> => {
   const requestConfig = {
-    url: toClickAPI,
+    url: TOCLICK_API,
     method: 'post',
     headers: {
-      'X-AUTH-TOKEN': toClickToken,
+      'X-AUTH-TOKEN': TOCLICK_TOCKEN,
       'Content-Type': 'application/json',
     },
     data: {
@@ -30,5 +31,3 @@ const getShortLink = async (baseLink): Promise<string> => {
     return baseLink;
   }
 };
-
-module.exports = getShortLink;

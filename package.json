@@ -2,7 +2,6 @@
   "name": "tiberiusbot",
   "version": "0.0.2",
   "description": "",
-  "main": "index.js",
   "scripts": {
     "prebuild": "rimraf dist",
     "start": "nest start",

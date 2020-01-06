@@ -1,4 +1,12 @@
-class GreetingHandler {
+import { Handler } from './Handlers.interface';
+
+export default class GreetingHandler implements Handler {
+  successor = null;
+
+  constructor(successor?: Handler) {
+    this.successor = successor
+  }
+
   handleCommand(data) {
     const {message} = data;
     if (greetings.includes(message.toLowerCase())) {
@@ -19,5 +27,3 @@ const greetings = [
   'hi',
   'hello',
 ];
-
-module.exports = GreetingHandler;

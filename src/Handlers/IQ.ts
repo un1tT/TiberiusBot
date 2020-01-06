@@ -1,4 +1,11 @@
-class IQHandler {
+import { Handler } from './Handlers.interface';
+
+export default class IQHandler implements Handler {
+  successor = null;
+
+  constructor(successor?: Handler) {
+    this.successor = successor
+  }
 
   handleCommand(data) {
     const {message, username} = data;
@@ -25,5 +32,3 @@ class IQHandler {
 }
 
 const pattern = '!iq';
-
-module.exports = IQHandler;

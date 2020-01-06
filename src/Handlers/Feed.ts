@@ -1,10 +1,18 @@
-const { habrRSS } = require('../constants/urls');
-const axios = require('axios');
-const parser = require('xml2js').parseString;
-const getShortLink = require('../services/ShortLinkProvider');
-const cutString = require('../services/stringCutter');
+import axios from 'axios';
+import { parseString } from  'xml2js';
 
-class FeedHandler {
+import { HABR_RSS } from '../constants/urls';
+import { getShortLink } from '../utils/ShortLinkProvider';
+import { cutString } from '../utils/stringCutter';
+import { Handler } from './Handlers.interface';
+
+export default class FeedHandler implements Handler{
+  successor = null;
+
+  constructor(successor?: Handler) {
+    this.successor = successor
+  }
+
   handleCommand(data) {
     const {message} = data;
     if (message.toLowerCase().startsWith(pattern)) {
@@ -19,9 +27,10 @@ class FeedHandler {
   }
 
   async fetchRSS() {
-    const { data: xml } = await axios.get(habrRSS);
+    const { data: xml } = await axios.get(HABR_RSS);
     let message = '';
-    parser(xml, (err, result) => {
+    await parseString(xml, (err, result) => {
+      // @ts-ignore
       message = this.buildFeed(result.rss);
     });
     return message;
@@ -49,5 +58,3 @@ class FeedHandler {
 }
 
 const pattern = '!feed';
-
-module.exports = FeedHandler;

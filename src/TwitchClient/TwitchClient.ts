@@ -1,8 +1,28 @@
 const tmi = require('tmi.js');
-const {username, channels, password} = require('./constants/auth.js');
-export default class TwitchClient {
+
+import { USERNAME, CHANNELS, PASSWORD } from '../constants/auth';
+import { TwitchClientInterface } from './TwitchClient.interface';
+
+export default class TwitchClient implements TwitchClientInterface {
+    handlers = [];
+    client = null;
 
     constructor(handlers) {
+        const options = {
+            options: {
+                debug: true,
+            },
+            connection: {
+                reconnect: true,
+                maxReconnectAttempts: 5,
+            },
+            identity: {
+                username: USERNAME,
+                password: PASSWORD,
+            },
+            channels: CHANNELS,
+        };
+
         this.handlers = handlers;
         this.client = new tmi.client(options);
         this.client.connect();
@@ -35,18 +55,3 @@ export default class TwitchClient {
         message && this.client.say(channel, `@${username} ${message}`);
     }
 }
-
-const options = {
-    options: {
-        debug: true,
-    },
-    connection: {
-        reconnect: true,
-        maxReconnectAttempts: 5,
-    },
-    identity: {
-        username,
-        password,
-    },
-    channels,
-};
