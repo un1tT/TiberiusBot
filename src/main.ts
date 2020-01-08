@@ -18,6 +18,6 @@ async function bootstrap() {
   const bot = new TwitchClient(handlers);
 
   const app = await NestFactory.create(AppModule);
-  await app.listen(3000);
+  await app.listen(process.env.PORT || 3000);
 }
 bootstrap();

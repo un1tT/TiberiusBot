@@ -24,7 +24,7 @@ function bootstrap() {
         const handlers = [greetingsHandler, kekHandler, feedHandler];
         const bot = new TwitchClient_1.default(handlers);
         const app = yield core_1.NestFactory.create(app_module_1.AppModule);
-        yield app.listen(3000);
+        yield app.listen(process.env.PORT || 3000);
     });
 }
 bootstrap();
