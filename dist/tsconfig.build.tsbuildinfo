@@ -1174,7 +1174,7 @@
         "signature": "012c50924ddef03e6b19974e4e0f698119b3833cfdd1e92439ca11bec41445a2"
       },
       "d:/projects/tiberiusbot/src/modules/channels/channels.contoller.ts": {
-        "version": "425c2092517ef7f9727dd8d6886dac1aaa1e513ba51c0d6d556f2e02cbc5a691",
+        "version": "dd98f44f1c3e43aa012c7d311a344a8bd2f87c919076a04e69381d5bfb2d6d21",
         "signature": "fae9a48f32933c5b4b23ce444178fc9fc87dbf0f4de347309ea513ff6bd6d3a8"
       },
       "d:/projects/tiberiusbot/src/modules/channels/channels.module.ts": {
@@ -1298,7 +1298,7 @@
         "signature": "19e9aee9dcbcb693ecc8c72c4a0022162ffccfe6c79dc0cd643cd40e0f2355db"
       },
       "d:/projects/tiberiusbot/src/main.ts": {
-        "version": "0d3286c56861bb61349b2173c7fdf97f5b54965bc69ee92cc6f15975a8c64336",
+        "version": "8ec1a1845ba1caa977bba1ce54fe477b6a6fbafb6601ded9020b3738910f46fc",
         "signature": "f761c91419d0a89422a0004ef1a92929dd4d2d5e5c16758654d8b0467d1998c6"
       },
       "d:/projects/tiberiusbot/node_modules/@types/connect/index.d.ts": {
@@ -3324,11 +3324,6 @@
       "d:/projects/tiberiusbot/src/main.ts": [
         "d:/projects/tiberiusbot/node_modules/@nestjs/core/index.d.ts",
         "d:/projects/tiberiusbot/src/app.module.ts",
-        "d:/projects/tiberiusbot/src/twitchclient/twitchclient.ts",
-        "d:/projects/tiberiusbot/src/handlers/kekhandler.ts",
-        "d:/projects/tiberiusbot/src/handlers/feed.ts",
-        "d:/projects/tiberiusbot/src/handlers/iq.ts",
-        "d:/projects/tiberiusbot/src/handlers/greetings.ts",
         "d:/projects/tiberiusbot/node_modules/@types/node/util.d.ts",
         "d:/projects/tiberiusbot/node_modules/@types/node/ts3.2/util.d.ts"
       ],
@@ -5617,6 +5612,7 @@
       "d:/projects/tiberiusbot/node_modules/@nestjs/common/utils/index.d.ts",
       "d:/projects/tiberiusbot/node_modules/@nestjs/common/index.d.ts",
       "d:/projects/tiberiusbot/src/app.service.ts",
+      "d:/projects/tiberiusbot/src/app.controller.ts",
       "d:/projects/tiberiusbot/node_modules/@nestjs/mongoose/dist/common/mongoose.decorators.d.ts",
       "d:/projects/tiberiusbot/node_modules/@nestjs/mongoose/dist/common/mongoose.utils.d.ts",
       "d:/projects/tiberiusbot/node_modules/@nestjs/mongoose/dist/common/index.d.ts",
@@ -5629,6 +5625,7 @@
       "d:/projects/tiberiusbot/node_modules/@types/mongodb/index.d.ts",
       "d:/projects/tiberiusbot/node_modules/@types/mongoose/index.d.ts",
       "d:/projects/tiberiusbot/src/modules/channels/channels.model.ts",
+      "d:/projects/tiberiusbot/src/modules/channels/channels.service.ts",
       "d:/projects/tiberiusbot/src/constants/auth.ts",
       "d:/projects/tiberiusbot/src/handlers/handlers.interface.ts",
       "d:/projects/tiberiusbot/src/twitchclient/twitchclient.interface.ts",
@@ -5641,8 +5638,8 @@
       "d:/projects/tiberiusbot/src/handlers/greetings.ts",
       "d:/projects/tiberiusbot/src/constants/config.ts",
       "d:/projects/tiberiusbot/src/twitchclient/twitchclient.ts",
-      "d:/projects/tiberiusbot/src/modules/channels/channels.contoller.ts",
       "d:/projects/tiberiusbot/src/modules/channels/channels.module.ts",
+      "d:/projects/tiberiusbot/src/app.module.ts",
       "d:/projects/tiberiusbot/node_modules/@nestjs/core/adapters/http-adapter.d.ts",
       "d:/projects/tiberiusbot/node_modules/@nestjs/core/adapters/index.d.ts",
       "d:/projects/tiberiusbot/node_modules/@nestjs/core/constants.d.ts",
@@ -5671,7 +5668,6 @@
       "d:/projects/tiberiusbot/node_modules/@nestjs/core/services/reflector.service.d.ts",
       "d:/projects/tiberiusbot/node_modules/@nestjs/core/services/index.d.ts",
       "d:/projects/tiberiusbot/node_modules/@nestjs/core/index.d.ts",
-      "d:/projects/tiberiusbot/src/main.ts",
       "d:/projects/tiberiusbot/node_modules/@types/connect/index.d.ts",
       "d:/projects/tiberiusbot/node_modules/@types/body-parser/index.d.ts",
       "d:/projects/tiberiusbot/node_modules/@types/cookiejar/index.d.ts",
@@ -5685,9 +5681,8 @@
       "d:/projects/tiberiusbot/node_modules/@types/mongoose-unique-validator/index.d.ts",
       "d:/projects/tiberiusbot/node_modules/@types/superagent/index.d.ts",
       "d:/projects/tiberiusbot/node_modules/@types/supertest/index.d.ts",
-      "d:/projects/tiberiusbot/src/app.controller.ts",
-      "d:/projects/tiberiusbot/src/modules/channels/channels.service.ts",
-      "d:/projects/tiberiusbot/src/app.module.ts"
+      "d:/projects/tiberiusbot/src/modules/channels/channels.contoller.ts",
+      "d:/projects/tiberiusbot/src/main.ts"
     ]
   },
   "version": "3.4.3"

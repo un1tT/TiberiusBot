@@ -3,7 +3,8 @@ import {
   Post,
   Body,
   Param,
-  Delete, Get,
+  Delete,
+  Get
 } from '@nestjs/common';
 
 import { ChannelsService } from './channels.service';
