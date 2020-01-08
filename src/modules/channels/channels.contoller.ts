@@ -8,20 +8,20 @@ import {
 
 import { ChannelsService } from './channels.service';
 
-@Controller('products')
+@Controller('channels')
 export class ChannelsController {
-  constructor(private readonly productsService: ChannelsService) {
+  constructor(private readonly channelsService: ChannelsService ) {
   }
 
   @Post()
   addChannel(
     @Body('name') channelName: string,
   ) {
-
+    this.channelsService.addChannel(channelName);
   }
 
   @Delete(':name')
   removeChannel(@Param('name') channelName: string) {
-    return null;
+    this.channelsService.deleteChannel(channelName);
   }
 }
