@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "prebuild": "rimraf dist",
-    "start": "npm i -g @nestjs/cli && nest start",
+    "start": "nest start",
     "lint": "tslint -p tsconfig.json -c tslint.json",
     "test": "jest",
     "test:watch": "jest --watch",
