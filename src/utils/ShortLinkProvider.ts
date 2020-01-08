@@ -24,7 +24,7 @@ export const getShortLink = async (baseLink): Promise<string> => {
   };
 
   try {
-    const { data: response } = await axios(requestConfig);
+    const { data: response } = await axios(JSON.stringify(requestConfig));
     return response.data.attributes.full_url;
   } catch (error) {
     console.log(error.response);
