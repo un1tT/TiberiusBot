@@ -10,10 +10,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const tmi = require('tmi.js');
 const auth_1 = require("../constants/auth");
+const config_1 = require("../constants/config");
 class TwitchClient {
-    constructor(handlers) {
+    constructor() {
         this.handlers = [];
         this.client = null;
+    }
+    static createEntity(channels) {
         const options = {
             options: {
                 debug: true,
@@ -26,21 +29,20 @@ class TwitchClient {
                 username: auth_1.USERNAME,
                 password: auth_1.PASSWORD,
             },
-            channels: auth_1.CHANNELS,
+            channels,
         };
-        this.handlers = handlers;
-        this.client = new tmi.client(options);
-        this.client.connect();
-        this.client.on('connected', (address, port) => {
+        const client = new tmi.client(options);
+        client.connect();
+        client.on('connected', (address, port) => {
             console.log(address, port);
         });
-        this.client.on('join', (channel, username, self) => {
+        client.on('join', (channel, username, self) => {
             if (self) {
-                this.client.action(channel, 'Joined.')
+                client.action(channel, 'Joined.')
                     .catch(err => console.log(err));
             }
         });
-        this.client.on('chat', (channel, userstate, message, self) => __awaiter(this, void 0, void 0, function* () {
+        client.on('chat', (channel, userstate, message, self) => __awaiter(this, void 0, void 0, function* () {
             if (self)
                 return;
             const { 'display-name': username } = userstate;
@@ -48,12 +50,9 @@ class TwitchClient {
                 message,
                 username,
             };
-            const result = yield this.handlers[0].handleCommand(data);
-            this.send(channel, result, username);
+            const result = yield config_1.handlers[0].handleCommand(data);
+            result && client.say(channel, `@${username} ${result}`);
         }));
-    }
-    send(channel, message, username) {
-        message && this.client.say(channel, `@${username} ${message}`);
     }
 }
 exports.default = TwitchClient;

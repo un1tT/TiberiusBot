@@ -1,13 +1,14 @@
 const tmi = require('tmi.js');
 
-import { USERNAME, CHANNELS, PASSWORD } from '../constants/auth';
+import { USERNAME, PASSWORD } from '../constants/auth';
 import { TwitchClientInterface } from './TwitchClient.interface';
+import { handlers } from '../constants/config'
 
 export default class TwitchClient implements TwitchClientInterface {
   handlers = [];
   client = null;
 
-  constructor(handlers) {
+  static createEntity(channels: string[]) {
     const options = {
       options: {
         debug: true,
@@ -20,25 +21,24 @@ export default class TwitchClient implements TwitchClientInterface {
         username: USERNAME,
         password: PASSWORD,
       },
-      channels: CHANNELS,
+      channels,
     };
 
-    this.handlers = handlers;
-    this.client = new tmi.client(options);
-    this.client.connect();
+    const client = new tmi.client(options);
+    client.connect();
 
-    this.client.on('connected', (address, port) => {
+    client.on('connected', (address, port) => {
       console.log(address, port);
     });
 
-    this.client.on('join', (channel, username, self) => {
+    client.on('join', (channel, username, self) => {
       if (self) {
-        this.client.action(channel, 'Joined.')
+        client.action(channel, 'Joined.')
           .catch(err => console.log(err));
       }
     });
 
-    this.client.on('chat', async (channel, userstate, message, self) => {
+    client.on('chat', async (channel, userstate, message, self) => {
       if (self) return;
       const {'display-name': username} = userstate;
       const data = {
@@ -46,12 +46,8 @@ export default class TwitchClient implements TwitchClientInterface {
         username,
       };
       // Chain of responsibilities starts:
-      const result = await this.handlers[0].handleCommand(data);
-      this.send(channel, result, username);
+      const result = await handlers[0].handleCommand(data);
+      result && client.say(channel, `@${username} ${result}`);
     });
-  }
-
-  send(channel, message, username) {
-    message && this.client.say(channel, `@${username} ${message}`);
   }
 }

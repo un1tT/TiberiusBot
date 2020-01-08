@@ -20,18 +20,22 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var _a;
 const common_1 = require("@nestjs/common");
 const mongoose_1 = require("@nestjs/mongoose");
 const mongoose_2 = require("mongoose");
 let ChannelsService = class ChannelsService {
     constructor(channelModel) {
         this.channelModel = channelModel;
+        channelModel.deleteMany({}, () => {
+            console.log('channels collection is clear');
+        });
     }
     addChannel(name) {
         return __awaiter(this, void 0, void 0, function* () {
-            const newChannel = this.channelModel({ name });
-            yield newChannel.save();
+            const newChannel = new this.channelModel({ name });
+            return yield newChannel.save((err) => {
+                console.log(`Unable to add channel ${name} to db, ${err}`);
+            }).then(() => [name]);
         });
     }
     deleteChannel(name) {
@@ -41,11 +45,18 @@ let ChannelsService = class ChannelsService {
             });
         });
     }
+    getChannels() {
+        return __awaiter(this, void 0, void 0, function* () {
+            const channels = yield this.channelModel.find();
+            console.log('КАНАЛЫ', channels);
+            return channels;
+        });
+    }
 };
 ChannelsService = __decorate([
     common_1.Injectable(),
     __param(0, mongoose_1.InjectModel('Channel')),
-    __metadata("design:paramtypes", [typeof (_a = typeof mongoose_2.Model !== "undefined" && mongoose_2.Model) === "function" ? _a : Object])
+    __metadata("design:paramtypes", [mongoose_2.Model])
 ], ChannelsService);
 exports.ChannelsService = ChannelsService;
 //# sourceMappingURL=channels.service.js.map

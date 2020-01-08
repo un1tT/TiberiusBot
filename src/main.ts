@@ -7,15 +7,10 @@ import IQHandler from './Handlers/IQ';
 import GreetingsHandler from './Handlers/Greetings';
 
 async function bootstrap() {
-  // Current handlers chain: Greetings -> Kek
+  // Current config chain: Greetings -> Kek
 
-  const iqHandler = new IQHandler();
-  const feedHandler = new FeedHandler(iqHandler);
-  const kekHandler = new KekHandler(feedHandler);
-  const greetingsHandler = new GreetingsHandler(kekHandler);
 
-  const handlers = [greetingsHandler, kekHandler, feedHandler];
-  const bot = new TwitchClient(handlers);
+
 
   const app = await NestFactory.create(AppModule);
   await app.listen(process.env.PORT || 3000);

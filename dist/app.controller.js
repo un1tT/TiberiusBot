@@ -16,7 +16,7 @@ let AppController = class AppController {
         this.appService = appService;
     }
     getHello() {
-        return { name: 'Max' };
+        return 'Hello! Here is Tiberius bot';
     }
 };
 __decorate([
@@ -24,7 +24,7 @@ __decorate([
     common_1.Header('Content-Type', 'text/html'),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
-    __metadata("design:returntype", Object)
+    __metadata("design:returntype", String)
 ], AppController.prototype, "getHello", null);
 AppController = __decorate([
     common_1.Controller(),

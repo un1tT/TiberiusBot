@@ -7,7 +7,7 @@ export class AppController {
 
   @Get()
   @Header('Content-Type', 'text/html')
-  getHello(): {name: string} {
-    return {name: 'Max'};
+  getHello(): string {
+    return 'Hello! Here is Tiberius bot';
   }
 }
