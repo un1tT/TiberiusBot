@@ -28,6 +28,7 @@
     "@nestjs/mongoose": "^6.1.2",
     "@nestjs/platform-express": "^6.7.2",
     "axios": "^0.18.1",
+    "concurrently": "^5.0.2",
     "mongoose": "^5.8.4",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.0",
