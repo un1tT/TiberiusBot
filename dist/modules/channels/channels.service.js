@@ -23,19 +23,32 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
 const mongoose_1 = require("@nestjs/mongoose");
 const mongoose_2 = require("mongoose");
+const TwitchClient_1 = require("../../TwitchClient/TwitchClient");
 let ChannelsService = class ChannelsService {
     constructor(channelModel) {
         this.channelModel = channelModel;
+        this.clients = [];
         channelModel.deleteMany({}, () => {
             console.log('channels collection is clear');
         });
+    }
+    createClient(name) {
+        const newClient = {
+            name,
+            client: TwitchClient_1.default.createEntity([name])
+        };
+        this.clients.push(newClient);
+    }
+    disconnectClient(name) {
+        const clientEntity = this.clients.find(({ name: clientName }) => clientName === name);
+        clientEntity.client.disconnect();
     }
     addChannel(name) {
         return __awaiter(this, void 0, void 0, function* () {
             const newChannel = new this.channelModel({ name });
             return yield newChannel.save((err) => {
                 console.log(`Unable to add channel ${name} to db, ${err}`);
-            }).then(() => [name]);
+            }).then(() => name);
         });
     }
     deleteChannel(name) {
@@ -47,9 +60,7 @@ let ChannelsService = class ChannelsService {
     }
     getChannels() {
         return __awaiter(this, void 0, void 0, function* () {
-            const channels = yield this.channelModel.find();
-            console.log('КАНАЛЫ', channels);
-            return channels;
+            return yield this.channelModel.find();
         });
     }
 };

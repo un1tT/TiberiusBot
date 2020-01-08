@@ -12,10 +12,6 @@ const tmi = require('tmi.js');
 const auth_1 = require("../constants/auth");
 const config_1 = require("../constants/config");
 class TwitchClient {
-    constructor() {
-        this.handlers = [];
-        this.client = null;
-    }
     static createEntity(channels) {
         const options = {
             options: {
@@ -53,6 +49,7 @@ class TwitchClient {
             const result = yield config_1.handlers[0].handleCommand(data);
             result && client.say(channel, `@${username} ${result}`);
         }));
+        return client;
     }
 }
 exports.default = TwitchClient;

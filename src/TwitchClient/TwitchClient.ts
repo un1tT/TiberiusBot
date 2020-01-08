@@ -1,12 +1,9 @@
 const tmi = require('tmi.js');
 
 import { USERNAME, PASSWORD } from '../constants/auth';
-import { TwitchClientInterface } from './TwitchClient.interface';
 import { handlers } from '../constants/config'
 
-export default class TwitchClient implements TwitchClientInterface {
-  handlers = [];
-  client = null;
+export default class TwitchClient {
 
   static createEntity(channels: string[]) {
     const options = {
@@ -49,5 +46,7 @@ export default class TwitchClient implements TwitchClientInterface {
       const result = await handlers[0].handleCommand(data);
       result && client.say(channel, `@${username} ${result}`);
     });
+
+    return client;
   }
 }

@@ -14,7 +14,6 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
 const channels_service_1 = require("./channels.service");
-const TwitchClient_1 = require("../../TwitchClient/TwitchClient");
 let ChannelsController = class ChannelsController {
     constructor(channelsService) {
         this.channelsService = channelsService;
@@ -23,13 +22,14 @@ let ChannelsController = class ChannelsController {
         return this.channelsService.getChannels();
     }
     addChannel(channelName) {
-        this.channelsService.addChannel(channelName).then((names) => {
-            console.log('NAMES', names);
-            const bot = TwitchClient_1.default.createEntity(names);
+        this.channelsService.addChannel(channelName).then((name) => {
+            this.channelsService.createClient(name);
         });
     }
     removeChannel(channelName) {
-        this.channelsService.deleteChannel(channelName);
+        this.channelsService.deleteChannel(channelName).then(() => {
+            this.channelsService.disconnectClient(channelName);
+        });
     }
 };
 __decorate([

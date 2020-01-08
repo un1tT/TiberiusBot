@@ -5,3 +5,7 @@ export interface Channel extends Document {
     _id: string;
     name: string;
 }
+export interface ClientEntity {
+    name: string;
+    client: any;
+}

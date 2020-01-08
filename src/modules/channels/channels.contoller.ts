@@ -8,7 +8,6 @@ import {
 } from '@nestjs/common';
 
 import { ChannelsService } from './channels.service';
-import TwitchClient from "../../TwitchClient/TwitchClient";
 
 @Controller('channels')
 export class ChannelsController {
@@ -24,14 +23,15 @@ export class ChannelsController {
   addChannel(
     @Body('name') channelName: string,
   ) {
-    this.channelsService.addChannel(channelName).then((names: string[]) => {
-      console.log('NAMES', names);
-      const bot = TwitchClient.createEntity(names);
+    this.channelsService.addChannel(channelName).then((name: string) => {
+      this.channelsService.createClient(name);
     });
   }
 
   @Delete(':name')
   removeChannel(@Param('name') channelName: string) {
-    this.channelsService.deleteChannel(channelName);
+    this.channelsService.deleteChannel(channelName).then(() => {
+      this.channelsService.disconnectClient(channelName);
+    });
   }
 }
