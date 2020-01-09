@@ -1122,8 +1122,8 @@
         "signature": "2b56ee1b1c4b7b530906aa3b99301ae3e07c7590ab056ffc8e79b01b2ad020dc"
       },
       "d:/projects/tiberiusbot/src/constants/auth.ts": {
-        "version": "ebc7393cd6b0b4de3ab01e397c6a7a6bd64b8dd4909d9606afdfb3992ff7b792",
-        "signature": "7d294f7a36b4922dedcf097181bfdbd985fb41011947b1ea0f44f1edca3c2a1c"
+        "version": "8f39b3b76ff46c0f10c99b9614c436d940aa1d0cc01bbf2309610ce14314db09",
+        "signature": "b173faa4c72d75044eae32566539ad88a4e1063be6502ba6075f0c31f7bc4b0b"
       },
       "d:/projects/tiberiusbot/src/handlers/handlers.interface.ts": {
         "version": "e960537d24981decf42be88eac0f5428de51ef9f50f5429d5bb9d068c23dc3fb",
@@ -1138,7 +1138,7 @@
         "signature": "864be075a06d76cbc289e764dca93905e771f08236c664abbd20c4bf01a50aad"
       },
       "d:/projects/tiberiusbot/src/utils/shortlinkprovider.ts": {
-        "version": "75f617f1310b95ea43ba0ff3b34dcc9a0ba052efb832b25ce3de5bc328347ff8",
+        "version": "b3abda7773a3bf04e9b6186031c60f76862ab387f33dad1f673292414275c82f",
         "signature": "c6fb20a3d5ef4ce9feec4ee8db63f84b44b4c1318f73410c547549d2dcc87d8c"
       },
       "d:/projects/tiberiusbot/src/utils/stringcutter.ts": {
@@ -1146,7 +1146,7 @@
         "signature": "63b9be99743ba7d7fd63562f1ac4700bf0701af86973f54155214925df490fba"
       },
       "d:/projects/tiberiusbot/src/handlers/feed.ts": {
-        "version": "30f704f37c2fca518400f011a9479f0e4d5bedc624467e75ad86ef3d0c194174",
+        "version": "4aa0014db8e06b2a13db728cbfa59e4b10a6f0238be36a445f3469435334884e",
         "signature": "4003b3c26a55944daa071c53fd84ae17dadcd633ddf72e50aaf86c278a6eed3a"
       },
       "d:/projects/tiberiusbot/src/handlers/kekhandler.ts": {
@@ -5609,17 +5609,16 @@
       "d:/projects/tiberiusbot/node_modules/@types/mongodb/index.d.ts",
       "d:/projects/tiberiusbot/node_modules/@types/mongoose/index.d.ts",
       "d:/projects/tiberiusbot/src/modules/channels/channels.model.ts",
-      "d:/projects/tiberiusbot/src/constants/auth.ts",
       "d:/projects/tiberiusbot/src/handlers/handlers.interface.ts",
       "d:/projects/tiberiusbot/src/handlers/iq.ts",
       "d:/projects/tiberiusbot/src/constants/urls.ts",
-      "d:/projects/tiberiusbot/src/utils/shortlinkprovider.ts",
       "d:/projects/tiberiusbot/src/utils/stringcutter.ts",
       "d:/projects/tiberiusbot/src/handlers/feed.ts",
       "d:/projects/tiberiusbot/src/handlers/kekhandler.ts",
       "d:/projects/tiberiusbot/src/handlers/greetings.ts",
       "d:/projects/tiberiusbot/src/constants/config.ts",
-      "d:/projects/tiberiusbot/src/twitchclient/twitchclient.ts",
+      "d:/projects/tiberiusbot/src/modules/channels/channels.service.ts",
+      "d:/projects/tiberiusbot/src/modules/channels/channels.contoller.ts",
       "d:/projects/tiberiusbot/src/modules/channels/channels.module.ts",
       "d:/projects/tiberiusbot/src/app.module.ts",
       "d:/projects/tiberiusbot/node_modules/@nestjs/core/adapters/http-adapter.d.ts",
@@ -5664,8 +5663,9 @@
       "d:/projects/tiberiusbot/node_modules/@types/mongoose-unique-validator/index.d.ts",
       "d:/projects/tiberiusbot/node_modules/@types/superagent/index.d.ts",
       "d:/projects/tiberiusbot/node_modules/@types/supertest/index.d.ts",
-      "d:/projects/tiberiusbot/src/modules/channels/channels.service.ts",
-      "d:/projects/tiberiusbot/src/modules/channels/channels.contoller.ts"
+      "d:/projects/tiberiusbot/src/constants/auth.ts",
+      "d:/projects/tiberiusbot/src/utils/shortlinkprovider.ts",
+      "d:/projects/tiberiusbot/src/twitchclient/twitchclient.ts"
     ]
   },
   "version": "3.4.3"

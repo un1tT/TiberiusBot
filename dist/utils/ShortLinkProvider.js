@@ -16,7 +16,7 @@ exports.getShortLink = (baseLink) => __awaiter(this, void 0, void 0, function* (
         url: urls_1.TOCLICK_API,
         method: 'post',
         headers: {
-            'X-AUTH-TOKEN': auth_1.TOCLICK_TOCKEN,
+            'X-AUTH-TOKEN': auth_1.TOCLICK_TOKEN,
             'Content-Type': 'application/json',
         },
         data: {
@@ -29,11 +29,11 @@ exports.getShortLink = (baseLink) => __awaiter(this, void 0, void 0, function* (
         },
     };
     try {
-        const { data: response } = yield axios_1.default(JSON.stringify(requestConfig));
+        const { data: response } = yield axios_1.default(requestConfig);
         return response.data.attributes.full_url;
     }
     catch (error) {
-        console.log(error.response);
+        console.log(error);
         return baseLink;
     }
 });

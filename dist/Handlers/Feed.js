@@ -39,6 +39,7 @@ class FeedHandler {
             yield xml2js_1.parseString(xml, (err, result) => {
                 message = this.buildFeed(result.rss);
             });
+            console.log('MESSAGE', message);
             return message;
         });
     }
